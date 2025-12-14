@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-demo": {
+    "angular-app-ng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -58,10 +58,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-demo:build:production"
+              "buildTarget": "recipe-app-ng:build:production"
             },
             "development": {
-              "buildTarget": "angular-demo:build:development"
+              "buildTarget": "recipe-app-ng:build:development"
             }
           },
           "defaultConfiguration": "development"

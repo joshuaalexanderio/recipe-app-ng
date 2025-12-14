@@ -1,0 +1,14 @@
+<div>
+  <h3>{{ recipe.name }}</h3>
+  <p>{{ recipe.description }}</p>
+
+  <h4>Ingredients:</h4>
+  <ul>
+    @for (ingredient of recipe.recipeIngredients; track ingredient.id) {
+      <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
+    }
+  </ul>
+  <h5>{{ recipe.favorite ? '⭐' : '☆' }} Favorite</h5>
+
+</div>
+

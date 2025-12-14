@@ -1,5 +1,5 @@
 {
-  "name": "angular-demo",
+  "name": "recipe-app-ng",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
