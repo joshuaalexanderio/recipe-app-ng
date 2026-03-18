@@ -1,6 +1,198 @@
+* {
+  margin: 0;
+}
+
 :host {
-  border: 2px solid black;
+  //border: 1px solid #333;
+  background-color: #242424;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  border-radius: 6px;
   display: block;
   padding: 10px;
   margin: 10px;
+}
+
+:host:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  border-color: #444;
+}
+
+.recipe-card {
+  height: 100%;
+  color: #e0e0e0;
+}
+.recipe-card > p {
+  color: #b0b0b0;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.recipe-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.recipe-header a:hover {
+  color: #B388FF;
+}
+
+.ingredients-header-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #7E57C2;
+  }
+}
+.ingredients-header {
+  flex: 1;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.expand-arrow {
+  padding-top: 7px;
+  padding-left: 3px;
+  color: #b0b0b0;
+}
+
+.ingredients-content {
+  margin-top: 12px;
+  background-color: #2a2a2a;  /* Subtle background for expanded section */
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.ingredients-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+
+  li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d0d0d0;
+    border-bottom: 1px solid #333;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    input[type="checkbox"] {
+      cursor: pointer;
+      accent-color: #9575CD;
+    }
+
+    label {
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    &:hover label {
+      color: #ffffff;
+    }
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background-color: #E34432;;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #CF3520;
+    }
+
+    &:active {
+    transform: translateY(+1px);
+      //background-color: #E34432
+  }
+
+  &:disabled {
+    background-color: #3a3a3a;
+    color: #666;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.favorite-star {
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  ::ng-deep svg {
+    fill: none;
+    stroke: #666;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1.01);
+  }
+}
+
+.favorite-star.favorite-filled {
+  ::ng-deep svg {
+    fill: #651FFF;
+    stroke: #651FFF;
+  }
+}
+.trash-can {
+  margin-left: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #888;
+  &:hover {
+    transform: scale(1.1);
+    color: #ff6b6b;
+  }
+  &:active {
+    transform: scale(1.01);
+  }
+}
+.pencil {
+  margin-left: auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #888;
+  &:hover {
+    transform: scale(1.1);
+    color: #ff6b6b;
+  }
+  &:active {
+    transform: scale(1.01);
+  }
 }

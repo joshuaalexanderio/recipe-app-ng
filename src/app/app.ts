@@ -1,11 +1,20 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {RecipeList} from './components/recipe-list/recipe-list';
+import { NavBar } from './components/nav-bar/nav-bar';
+import { AuthStore } from './stores/auth.store';
+import { environment } from '../environments/environment';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RecipeList],
+  imports: [RouterOutlet, NavBar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {}
+export class App implements OnInit {
+  private authStore = inject(AuthStore);
+
+  ngOnInit() {
+    this.authStore.setCredentials(environment.apiUsername, environment.apiPassword);
+  }
+}

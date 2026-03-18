@@ -1,14 +1,53 @@
-<div>
-  <h3>{{ recipe.name }}</h3>
+<div class="recipe-card">
+  <div class="recipe-header">
+    <a href="{{recipe.recipeUrl}}"><h3>{{ recipe.name }}</h3></a>
+    <lucide-icon
+      [img]="Star"
+      [class.favorite-filled]="isFavorite()"
+      (click)="toggleFavorite()"
+      class="favorite-star"
+    ></lucide-icon>
+    <lucide-icon
+      [img]="Pencil"
+      class="pencil"
+    >
+    </lucide-icon>
+    <lucide-icon
+      [img]="Trash2"
+      class="trash-can"
+      (click)="deleteRecipe()"
+    ></lucide-icon>
+  </div>
   <p>{{ recipe.description }}</p>
 
-  <h4>Ingredients:</h4>
-  <ul>
-    @for (ingredient of recipe.recipeIngredients; track ingredient.id) {
-      <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
-    }
-  </ul>
-  <h5>{{ recipe.favorite ? '⭐' : '☆' }} Favorite</h5>
+  <div class="ingredients-header-container" (click)="toggleExpand()">
+    <h4 class="ingredients-header">Ingredients:</h4>
+    <lucide-icon class="expand-arrow" [img]="isExpanded() ? ChevronDown : ChevronRight"></lucide-icon>
+  </div>
 
+  @if (isExpanded()) {
+    <div class="ingredients-content">
+      <ul class="ingredients-list">
+        @for (ingredient of recipe.recipeIngredients; track ingredient.id) {
+          <li>
+            <input type="checkbox"
+                   [id]="'ingredient-' + ingredient.id"
+                   [checked]="selectedIngredients().has(ingredient.id)"
+                   (change)="toggleIngredientSelection(ingredient.id)">
+            <label [for]="'ingredient-' + ingredient.id">
+              {{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}
+            </label>
+            <lucide-icon [img]="Trash2" class="trash-can" (click)="deleteRecipeIngredient(ingredient.id)"></lucide-icon>
+          </li>
+        }
+      </ul>
+
+      <div class="button-group">
+        <button class="btn" (click)="sendAllToTodoist()">All to Todoist</button>
+        <button class="btn"
+                (click)="sendSelectedToTodoist()"
+                [disabled]="selectedIngredients().size === 0">Selected</button>
+      </div>
+    </div>
+  }
 </div>
-

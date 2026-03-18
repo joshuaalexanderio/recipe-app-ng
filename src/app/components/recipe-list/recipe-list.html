@@ -1,6 +1,10 @@
- <div>
-  @for (recipe of recipes(); track recipe.id) {
-    <app-recipe-card [recipe]="recipe"></app-recipe-card>
-  }
-
+ <div class="container">
+   @for (recipe of sortedRecipes(); track recipe.id) {
+     <app-recipe-card
+       [recipe]="recipe"
+       (favoriteToggled)="handleFavoriteToggled($event)"
+       (recipeDeleted)="handleRecipeDeleted($event)"
+       (recipeIngredientDeleted)="handleRecipeIngredientDeleted(recipe.id, $event.id)"
+     ></app-recipe-card>
+   }
 </div>

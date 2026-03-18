@@ -1,10 +1,6 @@
-export interface RecipeIngredient {
-  id: number;
-  name: string;
-  quantity: string;
-  unit: string;
-  orderIndex: number;
-}
+import {RecipeIngredient} from './recipeIngredient';
+import {User} from './user';
+
 export interface Recipe {
   id: number;
   name: string;
@@ -12,4 +8,5 @@ export interface Recipe {
   recipeUrl: string;
   favorite: boolean;
   recipeIngredients: RecipeIngredient[];
+  user: User;
 }
