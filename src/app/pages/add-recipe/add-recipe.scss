@@ -1,0 +1,264 @@
+.add-recipe-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0;
+  color: #e0e0e0;
+
+  h1 {
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+}
+
+.import-section {
+  background-color: #242424;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+}
+
+.url-input-group {
+  display: flex;
+  gap: 10px;
+
+  input {
+    flex: 1;
+    padding: 12px;
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+
+    &::placeholder {
+      color: #666;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #7E57C2;
+    }
+  }
+
+  button {
+    padding: 12px 24px;
+    background-color: #B388FF;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #9575CD;
+    }
+
+    &:disabled {
+      background-color: #3a3a3a;
+      color: #666;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.recipe-form {
+  background-color: #242424;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  h3 {
+    color: #ffffff;
+    margin: 20px 0 15px 0;
+    font-size: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      background-color: #2a2a2a;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: #666;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #7E57C2;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+  }
+
+  .ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+
+
+    li {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #333;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      input {
+        padding: 10px;
+        background-color: #2a2a2a;
+        border: 1px solid #333;
+        border-radius: 6px;
+        color: #e0e0e0;
+        font-family: 'Poppins', sans-serif;
+
+        &::placeholder {
+          color: #666;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #7E57C2;
+        }
+
+        &:nth-child(1) { width: 80px; }
+        &:nth-child(2) { width: 100px; }
+        &:nth-child(3) { flex: 1; }
+      }
+    }
+  }
+
+  .add-ingredient-button {
+    width: 100%;
+    padding: 12px 24px;
+    background-color: #7E57C2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: #6A4AAA;
+    }
+
+    &:disabled {
+      background-color: #3a3a3a;
+      color: #666;
+      cursor: not-allowed;
+    }
+  }
+
+  .delete-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-color: #db4c3f;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #c44133;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .cancel-btn {
+      background-color: #3a3a3a;
+      color: #b0b0b0;
+
+      &:hover {
+        background-color: #4a4a4a;
+        color: #e0e0e0;
+      }
+    }
+
+    .save-btn {
+      background-color: #7E57C2;
+      color: #e0e0e0;
+
+      &:hover {
+        background-color: #6A4AAA;
+        color: #e0e0e0;
+      }
+    }
+  }
+  .delete-ingredient-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
