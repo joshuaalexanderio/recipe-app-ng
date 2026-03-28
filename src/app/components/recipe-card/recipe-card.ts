@@ -12,6 +12,8 @@ import {TodoistStore} from '../../stores/todoist.store';
 })
 export class RecipeCard implements OnInit {
   @Input() recipe!: Recipe;
+  @Input() active = false;
+  @Output() recipeSelected = new EventEmitter<Recipe>();
   @Output() favoriteToggled = new EventEmitter<Recipe>();
   @Output() recipeDeleted = new EventEmitter<number>();
   @Output() recipeIngredientDeleted = new EventEmitter<RecipeIngredient>();

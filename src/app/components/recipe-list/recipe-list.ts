@@ -3,14 +3,26 @@ import { RecipeCard} from '../recipe-card/recipe-card';
 import { RecipeApi } from '../../services/recipe-api';
 import {Recipe} from '../../models/recipe';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {NgClass} from '@angular/common';
+import {RecipeDrawerComponent} from '../../recipe-drawer/recipe-drawer';
 
 @Component({
   selector: 'app-recipe-list',
-  imports: [RecipeCard, DragDropModule],
+  imports: [RecipeCard, DragDropModule, NgClass, RecipeDrawerComponent],
   templateUrl: './recipe-list.html',
   standalone: true,
 })
 export class RecipeList implements OnInit {
+
+  selectedRecipe = signal<Recipe | null>(null);
+
+  onRecipeSelected(recipe: Recipe) {
+    this.selectedRecipe.set(recipe);
+  }
+
+  closeDrawer() {
+    this.selectedRecipe.set(null);
+  }
   recipes = signal<Recipe[]>([]);
 
   sortedRecipes = computed(() => {

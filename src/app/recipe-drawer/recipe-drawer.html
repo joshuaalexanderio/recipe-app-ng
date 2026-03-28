@@ -1,0 +1,82 @@
+<div class="flex flex-col h-full bg-[#1e1e1e] border-l border-[#333] w-full">
+
+  <!-- header -->
+  <div class="flex items-start justify-between gap-3 p-4 border-b border-[#333]">
+    <div>
+      <h2 class="text-sm font-medium text-[#e0e0e0] leading-snug">{{ recipe.name }}</h2>
+      <p class="text-xs text-[#666] mt-0.5">{{ recipe.recipeIngredients.length }} ingredients</p>
+    </div>
+    <button
+      (click)="closed.emit()"
+      class="text-[#777] hover:text-[#e0e0e0] border border-[#444] rounded-md w-6 h-6 flex items-center justify-center text-xs shrink-0 mt-0.5 transition-colors"
+    >✕</button>
+  </div>
+
+  <!-- error banner -->
+  @if (error()) {
+    <div class="mx-4 mt-3 px-3 py-2 bg-red-900/30 border border-red-700/50 rounded-md text-xs text-red-400">
+      {{ error() }}
+    </div>
+  }
+
+  <!-- not connected warning -->
+  @if (!connected()) {
+    <div class="mx-4 mt-3 px-3 py-2 bg-yellow-900/20 border border-yellow-700/40 rounded-md text-xs text-yellow-500">
+      Todoist not connected — items won't sync.
+    </div>
+  }
+
+  <!-- ingredient list -->
+  <div class="flex-1 overflow-y-auto py-2">
+    @for (ingredient of recipe.recipeIngredients; track ingredient.id) {
+      <div class="flex items-center gap-2.5 px-4 py-2 group border-b border-[#2a2a2a] last:border-none">
+
+        <button
+          (click)="toggleCheck(ingredient.id)"
+          class="w-3.5 h-3.5 shrink-0 rounded-sm border flex items-center justify-center transition-colors"
+          [class.bg-[#7c5cbf]]="isChecked(ingredient.id)"
+          [class.border-[#7c5cbf]]="isChecked(ingredient.id)"
+          [class.border-[#555]]="!isChecked(ingredient.id)"
+        >
+          @if (isChecked(ingredient.id)) {
+            <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+              <path d="M1 3l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          }
+        </button>
+
+        <span
+          class="text-xs flex-1 transition-colors text-[#ccc]"
+        >
+          {{ formatIngredient(ingredient) }}
+        </span>
+
+        <lucide-icon
+          [img]="Trash2"
+          class="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-[#666] hover:text-red-400 w-3.5 h-3.5"
+          (click)="ingredientDeleted.emit(ingredient.id)"
+        ></lucide-icon>
+
+      </div>
+    }
+  </div>
+
+  <!-- footer -->
+  <div class="flex gap-2 p-4 border-t border-[#333]">
+    <button
+      (click)="sendAllToTodoist()"
+      [disabled]="loading()"
+      class="flex-1 bg-[#7c5cbf] hover:bg-[#9070d4] disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-medium rounded-lg py-2 transition-colors"
+    >
+      {{ loading() ? 'Sending...' : 'All to Todoist' }}
+    </button>
+    <button
+      (click)="sendSelectedToTodoist()"
+      [disabled]="loading() || checkedIds().size === 0"
+      class="flex-1 border border-[#444] hover:border-[#666] text-[#aaa] hover:text-[#e0e0e0] disabled:opacity-50 disabled:cursor-not-allowed text-xs rounded-lg py-2 transition-colors"
+    >
+      Selected ({{ checkedIds().size }})
+    </button>
+  </div>
+
+</div>
