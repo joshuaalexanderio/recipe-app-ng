@@ -1,53 +1,75 @@
-<div class="recipe-card">
-  <div class="recipe-header">
-    <a href="{{recipe.recipeUrl}}"><h3>{{ recipe.name }}</h3></a>
+<div class="h-full text-[#e0e0e0]">
+
+  <div class="flex items-center gap-1" (click)="recipeSelected.emit(recipe)">
+    <a href="{{recipe.recipeUrl}}" class="hover:text-[#B388FF]">
+      <h3>{{ recipe.name }}</h3>
+    </a>
     <lucide-icon
       [img]="Star"
       [class.favorite-filled]="isFavorite()"
       (click)="toggleFavorite()"
-      class="favorite-star"
+      class="favorite-star cursor-pointer transition-all hover:scale-110 active:scale-[1.01]"
     ></lucide-icon>
     <lucide-icon
       [img]="Pencil"
-      class="pencil"
-    >
-    </lucide-icon>
+      class="icon-action ml-auto"
+    ></lucide-icon>
     <lucide-icon
       [img]="Trash2"
-      class="trash-can"
+      class="icon-action"
       (click)="deleteRecipe()"
     ></lucide-icon>
   </div>
-  <p>{{ recipe.description }}</p>
 
-  <div class="ingredients-header-container" (click)="toggleExpand()">
-    <h4 class="ingredients-header">Ingredients:</h4>
-    <lucide-icon class="expand-arrow" [img]="isExpanded() ? ChevronDown : ChevronRight"></lucide-icon>
+  <p class="text-[#b0b0b0] text-sm leading-6 mt-2">{{ recipe.description }}</p>
+
+  <div
+    class="flex items-center cursor-pointer select-none mt-2 p-2 rounded-md transition-colors duration-200 hover:bg-[#7E57C2]"
+    (click)="recipeSelected.emit(recipe)"
+  >
+    <h4 class="flex-1 text-white text-base ingredients-trigger">Ingredients:</h4>
+    <lucide-icon
+      class="pt-[7px] pl-[3px] text-[#b0b0b0]"n
+      [img]="isExpanded() ? ChevronDown : ChevronRight"
+    ></lucide-icon>
   </div>
 
   @if (isExpanded()) {
-    <div class="ingredients-content">
-      <ul class="ingredients-list">
+    <div class="mt-3 bg-[#2a2a2a] p-3 rounded-md">
+      <ul class="list-none p-0 mb-4">
         @for (ingredient of recipe.recipeIngredients; track ingredient.id) {
-          <li>
-            <input type="checkbox"
-                   [id]="'ingredient-' + ingredient.id"
-                   [checked]="selectedIngredients().has(ingredient.id)"
-                   (change)="toggleIngredientSelection(ingredient.id)">
-            <label [for]="'ingredient-' + ingredient.id">
+          <li class="py-2 flex items-center gap-2.5 text-[#d0d0d0] border-b border-[#333] last:border-b-0 [&:hover_label]:text-white">
+            <input
+              type="checkbox"
+              class="cursor-pointer accent-[#9575CD]"
+              [id]="'ingredient-' + ingredient.id"
+              [checked]="selectedIngredients().has(ingredient.id)"
+              (change)="toggleIngredientSelection(ingredient.id)"
+            >
+            <label
+              class="cursor-pointer transition-colors duration-200 flex-1"
+              [for]="'ingredient-' + ingredient.id"
+            >
               {{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}
             </label>
-            <lucide-icon [img]="Trash2" class="trash-can" (click)="deleteRecipeIngredient(ingredient.id)"></lucide-icon>
+            <lucide-icon
+              [img]="Trash2"
+              class="icon-action"
+              (click)="deleteRecipeIngredient(ingredient.id)"
+            ></lucide-icon>
           </li>
         }
       </ul>
 
-      <div class="button-group">
+      <div class="flex gap-2.5 mt-4">
         <button class="btn" (click)="sendAllToTodoist()">All to Todoist</button>
-        <button class="btn"
-                (click)="sendSelectedToTodoist()"
-                [disabled]="selectedIngredients().size === 0">Selected</button>
+        <button
+          class="btn disabled:bg-[#3a3a3a] disabled:text-[#666] disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
+          (click)="sendSelectedToTodoist()"
+          [disabled]="selectedIngredients().size === 0"
+        >Selected</button>
       </div>
     </div>
   }
+
 </div>

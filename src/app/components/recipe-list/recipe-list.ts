@@ -8,7 +8,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
   selector: 'app-recipe-list',
   imports: [RecipeCard, DragDropModule],
   templateUrl: './recipe-list.html',
-  styleUrl: './recipe-list.scss',
+  standalone: true,
 })
 export class RecipeList implements OnInit {
   recipes = signal<Recipe[]>([]);

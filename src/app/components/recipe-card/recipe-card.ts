@@ -8,7 +8,7 @@ import {TodoistStore} from '../../stores/todoist.store';
   selector: 'app-recipe-card',
   imports: [LucideAngularModule],
   templateUrl: './recipe-card.html',
-  styleUrl: './recipe-card.scss',
+  styleUrl: './recipe-card.css',
 })
 export class RecipeCard implements OnInit {
   @Input() recipe!: Recipe;

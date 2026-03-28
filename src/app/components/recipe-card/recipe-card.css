@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  background-color: #242424;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+}
+
+.favorite-star {
+  ::ng-deep svg { fill: none; stroke: #666; }
+  &.favorite-filled ::ng-deep svg { fill: #651FFF; stroke: #651FFF; }
+}

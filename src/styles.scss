@@ -1,7 +1,8 @@
-@import "tailwindcss";
-
+@use "tailwindcss";
+@source "../../src";
 @theme {
   --color-primary: #242424;
+  --color-bg: #1a1a1a;
   --color-text-white: #e0e0e0;
 }
 
@@ -16,6 +17,30 @@ a {
   color: inherit;
   &:hover {
     opacity: 0.7;
+  }
+}
+@layer components {
+  .btn {
+    @apply flex-1 px-6 py-2.5 text-sm font-medium text-[#EDE7F6] bg-[#7E57C2] border-none rounded-md cursor-pointer transition-all duration-200 ease-in-out m-[5px];
+
+    &:hover {
+      @apply -translate-y-0.5 shadow-[0_3px_6px_#5E35B1];
+    }
+
+    &:active {
+      @apply translate-y-0 shadow-[0_2px_4px_#5E35B1];
+    }
+
+    &:disabled {
+      @apply bg-slate-300 cursor-not-allowed translate-y-0 shadow-none;
+    }
+  }
+  .icon-action {
+    @apply cursor-pointer transition-all text-[#888] hover:scale-110 hover:text-[#ff6b6b] active:scale-[1.01];
+  }
+
+  .ingredient-li {
+    @apply py-2 flex items-center gap-2.5 text-[#d0d0d0] border-b border-[#333] last:border-b-0 [&:hover_label]:text-white;
   }
 }
 
