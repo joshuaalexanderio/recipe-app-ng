@@ -3,7 +3,6 @@ import { TodoistApi } from '../services/todoist-api';
 import {
   TodoistProject,
   TodoistTask,
-  TodoistConnectionStatus,
   TodoistShoppingListRequest,
   TodoistShoppingListResponse
 } from '../models/todoist';
@@ -12,8 +11,6 @@ import {
 export class TodoistStore {
   private api = inject(TodoistApi);
 
-  // ── State ─────────────────────────────────────────────────────
-
   readonly connected = signal<boolean>(false);
   readonly projects = signal<TodoistProject[]>([]);
   readonly tasks = signal<TodoistTask[]>([]);
@@ -21,12 +18,8 @@ export class TodoistStore {
   readonly error = signal<string | null>(null);
   readonly lastShoppingListResult = signal<TodoistShoppingListResponse | null>(null);
 
-  // ── Computed ──────────────────────────────────────────────────
-
   readonly hasProjects = computed(() => this.projects().length > 0);
   readonly hasTasks = computed(() => this.tasks().length > 0);
-
-  // ── Connection ────────────────────────────────────────────────
 
   checkConnection() {
     this.api.getConnectionStatus().subscribe({
@@ -56,8 +49,6 @@ export class TodoistStore {
     });
   }
 
-  // ── Projects ──────────────────────────────────────────────────
-
   loadProjects() {
     this.loading.set(true);
     this.error.set(null);
@@ -72,8 +63,6 @@ export class TodoistStore {
       }
     });
   }
-
-  // ── Tasks ─────────────────────────────────────────────────────
 
   loadTasks(projectId?: string) {
     this.loading.set(true);
@@ -121,8 +110,6 @@ export class TodoistStore {
     });
   }
 
-  // ── Shopping List ─────────────────────────────────────────────
-
   sendToShoppingList(recipeId: number, ingredientIds: number[], projectId: string | null = null) {
     this.loading.set(true);
     this.error.set(null);
@@ -140,8 +127,6 @@ export class TodoistStore {
       }
     });
   }
-
-  // ── Utility ───────────────────────────────────────────────────
 
   clearError() {
     this.error.set(null);
