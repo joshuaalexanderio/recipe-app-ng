@@ -20,7 +20,7 @@ export class RecipeList implements OnInit {
     const current = this.selectedRecipe();
     this.selectedRecipe.set(current?.id === recipe.id ? null : recipe);
   }
-  
+
   closeDrawer() {
     this.selectedRecipe.set(null);
   }
@@ -67,7 +67,7 @@ export class RecipeList implements OnInit {
   }
 
   constructor(private recipeApi: RecipeApi) {}
-
+  // TODO: sometimes recipes don't load after logging in or connecting todoist -- needs more debugging
   ngOnInit() {
     console.log("Initialized")
     this.recipeApi.fetchRecipes().subscribe({
