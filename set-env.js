@@ -2,9 +2,9 @@ const fs = require('fs');
 
 const environment = `export const environment = {
   production: true,
-  apiUrl: '${process.env.API_URL}',
-  basicAuthUsername: '${process.env.API_USERNAME}',
-  basicAuthPassword: '${process.env.API_PASSWORD}'
+  apiUrl: '${process.env.apiUrl}',
+  basicAuthUsername: '${process.env.basicAuthUsername}',
+  basicAuthPassword: '${process.env.basicAuthPassword}'
 };
  `;
 
