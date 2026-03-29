@@ -1,8 +1,8 @@
 <div class="mt-2 mx-4 flex justify-center">
   <button class="btn" [routerLink]="['/']">Home</button>
-  <button (click)="todoistStore.connect()" class="btn">Connect to Todoist</button>
+  <button (click)="todoistStore.connect()" class="btn bg-[#E34432] text-white hover:bg-[#B8301F] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_#B8301F]">Connect to Todoist</button>
   @if (!connected()) {
-    <div class="mx-4 mt-3 px-3 py-2 bg-yellow-900/20 border border-yellow-700/40 rounded-md text-xs text-yellow-500">
+    <div class="mt-2 mx-4 px-3 py-2 bg-yellow-900/20 border border-yellow-700/40 rounded-md text-xs text-yellow-500">
       Todoist not connected
     </div>
   }
