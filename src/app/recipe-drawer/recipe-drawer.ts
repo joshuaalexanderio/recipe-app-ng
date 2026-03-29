@@ -56,8 +56,12 @@ export class RecipeDrawerComponent {
   }
 
   sendAllToTodoist() {
-    const allIds = this.recipe.recipeIngredients.map(i => i.id);
-    this.todoistStore.sendToShoppingList(this.recipe.id, allIds);
+    const ids = this.recipe.recipeIngredients.map(i => i.id);
+    this.todoistStore.sendToShoppingList(
+      this.recipe.id,
+      ids,
+      this.todoistStore.selectedProjectId()
+    );
   }
 
   sendSelectedToTodoist() {
