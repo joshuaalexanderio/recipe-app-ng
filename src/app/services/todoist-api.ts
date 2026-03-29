@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import {
   TodoistProject,
   TodoistTask,
@@ -11,10 +12,8 @@ import {
 @Injectable({ providedIn: 'root' })
 export class TodoistApi {
   private http = inject(HttpClient);
-  private baseUrl = '/api/todoist';
-  private authUrl = '/api/auth/todoist';
-
-  // ── Connection ──────────────────────────────────────────────────
+  private baseUrl = `${environment.apiUrl}/api/todoist`;
+  private authUrl = `${environment.apiUrl}/api/auth/todoist`;
 
   getConnectionStatus() {
     return this.http.get<TodoistConnectionStatus>(`${this.authUrl}/status`);
@@ -28,13 +27,9 @@ export class TodoistApi {
     return `${this.authUrl}/authorize`;
   }
 
-  // ── Projects ────────────────────────────────────────────────────
-
   getProjects() {
     return this.http.get<TodoistProject[]>(`${this.baseUrl}/projects`);
   }
-
-  // ── Tasks ───────────────────────────────────────────────────────
 
   getTasks(projectId?: string) {
     const params = projectId ? { projectId } : {};
@@ -52,8 +47,6 @@ export class TodoistApi {
   deleteTask(taskId: string) {
     return this.http.delete<void>(`${this.baseUrl}/tasks/${taskId}`);
   }
-
-  // ── Shopping List ─────────────────────────────────────────────
 
   sendToShoppingList(request: TodoistShoppingListRequest) {
     return this.http.post<TodoistShoppingListResponse>(`${this.baseUrl}/shopping-list`, request);
