@@ -20,12 +20,7 @@ export class AddRecipe implements OnInit {
     description: '',
     recipeUrl: '',
     favorite: false,
-    recipeIngredients: [],
-    user: {
-      id: 1,
-      name: "",
-      email: ""
-    }
+    recipeIngredients: []
   });
 
   constructor(
@@ -43,11 +38,7 @@ export class AddRecipe implements OnInit {
     this.isLoading.set(true);
     this.recipeApi.importRecipe(this.recipeUrl()).subscribe({
       next: (importedRecipe) => {
-        const currentUser = this.recipe().user;
-        this.recipe.set({
-          ...importedRecipe,
-          user: currentUser
-        });
+        this.recipe.set(importedRecipe);
         this.isLoading.set(false);
       },
       error: (err) => {

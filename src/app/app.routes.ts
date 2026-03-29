@@ -1,8 +1,11 @@
 import { Routes } from '@angular/router';
 import { RecipeList } from './components/recipe-list/recipe-list';
 import { AddRecipe } from './pages/add-recipe/add-recipe';
+import { Login } from './pages/login/login';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { title: 'Recipe Raccoon', path: '', component: RecipeList },
-  { title: 'Add recipe', path: 'add', component: AddRecipe },
+  { path: 'login', title: 'Login', component: Login },
+  { path: '', title: 'Recipe Raccoon', component: RecipeList, canActivate: [authGuard] },
+  { path: 'add', title: 'Add recipe', component: AddRecipe, canActivate: [authGuard] },
 ];

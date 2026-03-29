@@ -1,8 +1,6 @@
 import {Component, effect, inject, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBar } from './components/nav-bar/nav-bar';
-import { AuthStore } from './stores/auth.store';
-import { environment } from '../environments/environment';
 import {TodoistStore} from './stores/todoist.store';
 
 @Component({
@@ -12,8 +10,7 @@ import {TodoistStore} from './stores/todoist.store';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements OnInit {
-  private authStore = inject(AuthStore);
+export class App {
   private todoistStore = inject(TodoistStore);
 
   constructor() {
@@ -25,8 +22,4 @@ export class App implements OnInit {
       }
     });
   }
-  ngOnInit() {
-    this.authStore.setCredentials(environment.basicAuthUsername, environment.basicAuthPassword);
-  }
-
 }
