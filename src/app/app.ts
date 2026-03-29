@@ -17,7 +17,7 @@ export class App implements OnInit {
   private todoistStore = inject(TodoistStore);
 
   ngOnInit() {
-    this.authStore.setCredentials(environment.apiUsername, environment.apiPassword);
+    this.authStore.setCredentials(environment.basicAuthUsername, environment.basicAuthPassword);
     this.todoistStore.checkConnection();
   }
 }
