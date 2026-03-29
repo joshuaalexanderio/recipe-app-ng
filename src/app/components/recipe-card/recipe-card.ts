@@ -96,22 +96,6 @@ export class RecipeCard implements OnInit {
     this.selectedIngredients.set(current);
   }
 
-  sendAllToTodoist() {
-    const allIds = this.recipe.recipeIngredients.map(ri => ri.id);
-    this.sendToTodoist(allIds);
-  }
-
-  sendSelectedToTodoist() {
-    const ids = Array.from(this.selectedIngredients());
-    if (ids.length > 0) {
-      this.sendToTodoist(ids);
-    }
-  }
-
-  private sendToTodoist(ingredientIds: number[]) {
-    this.todoistStore.sendToShoppingList(this.recipe.id, ingredientIds);
-  }
-
   ngOnInit() {
     this.isFavorite.set(this.recipe.favorite);
     console.log('Recipe card ngOnInit:', this.recipe);
