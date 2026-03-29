@@ -1,9 +1,5 @@
-# RecipeAppNg (WIP)
+# RecipeAppNg 
 Angular front end for [Recipe-App-Backend](https://github.com/joshuaalexanderio/recipe-app-backend). That project is a dependency for this one.
-
-# RecipeAppNg
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
 
 ## Development server
 
