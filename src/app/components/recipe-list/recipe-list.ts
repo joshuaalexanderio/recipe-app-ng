@@ -17,9 +17,10 @@ export class RecipeList implements OnInit {
   selectedRecipe = signal<Recipe | null>(null);
 
   onRecipeSelected(recipe: Recipe) {
-    this.selectedRecipe.set(recipe);
+    const current = this.selectedRecipe();
+    this.selectedRecipe.set(current?.id === recipe.id ? null : recipe);
   }
-
+  
   closeDrawer() {
     this.selectedRecipe.set(null);
   }

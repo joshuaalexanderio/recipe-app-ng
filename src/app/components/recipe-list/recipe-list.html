@@ -10,7 +10,7 @@
         (favoriteToggled)="handleFavoriteToggled($event)"
         (recipeDeleted)="handleRecipeDeleted($event)"
         (recipeIngredientDeleted)="handleRecipeIngredientDeleted(recipe.id, $event.id)"
-        (recipeSelected)="selectedRecipe.set($event)"
+        (recipeSelected)="onRecipeSelected($event)"
       ></app-recipe-card>
     }
   </div>
