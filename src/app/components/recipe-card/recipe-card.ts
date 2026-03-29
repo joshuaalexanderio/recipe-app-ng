@@ -1,6 +1,14 @@
 import {Recipe} from '../../models/recipe';
 import {Component, EventEmitter, inject, Input, OnInit, Output, signal} from '@angular/core';
-import {LucideAngularModule, ChevronDown, ChevronRight, Star, Trash2, Pencil} from 'lucide-angular';
+import {
+  LucideAngularModule,
+  ChevronDown,
+  ChevronRight,
+  Star,
+  Trash2,
+  Pencil,
+  ChevronLeft
+} from 'lucide-angular';
 import {RecipeApi} from '../../services/recipe-api';
 import {RecipeIngredient} from '../../models/recipeIngredient';
 import {TodoistStore} from '../../stores/todoist.store';
@@ -111,4 +119,5 @@ export class RecipeCard implements OnInit {
 
   protected readonly Trash2 = Trash2;
   protected readonly Pencil = Pencil;
+  protected readonly ChevronLeft = ChevronLeft;
 }
