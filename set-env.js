@@ -6,7 +6,7 @@ const environment = `export const environment = {
   basicAuthUsername: '${process.env.API_USERNAME}',
   basicAuthPassword: '${process.env.API_PASSWORD}'
 };
-`;
+ `;
 
 fs.writeFileSync('./src/environments/environment.ts', environment);
 console.log('environment.ts generated');
