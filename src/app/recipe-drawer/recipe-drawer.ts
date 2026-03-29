@@ -17,19 +17,25 @@ export class RecipeDrawerComponent {
   @Output() closed = new EventEmitter<void>();
   @Output() ingredientDeleted = new EventEmitter<number>();
 
-  private todoistStore = inject(TodoistStore);
+  protected todoistStore = inject(TodoistStore);
 
   readonly Trash2 = Trash2;
 
   readonly loading = this.todoistStore.loading;
   readonly error = this.todoistStore.error;
-  readonly connected = this.todoistStore.connected;
+  connected = this.todoistStore.connected;
+  projects = this.todoistStore.projects;
+  selectedProjectId = this.todoistStore.selectedProjectId;
 
   checkedIds = signal<Set<number>>(new Set());
 
   selectedIngredients = computed(() =>
     this.recipe.recipeIngredients.filter(i => this.checkedIds().has(i.id))
   );
+
+  selectProject(projectId: string) {
+    this.todoistStore.setSelectedProject(projectId);
+  }
 
   toggleCheck(id: number) {
     this.checkedIds.update(set => {
@@ -57,7 +63,11 @@ export class RecipeDrawerComponent {
   sendSelectedToTodoist() {
     const ids = Array.from(this.checkedIds());
     if (ids.length > 0) {
-      this.todoistStore.sendToShoppingList(this.recipe.id, ids);
+      this.todoistStore.sendToShoppingList(
+        this.recipe.id,
+        ids,
+        this.todoistStore.selectedProjectId()
+      );
     }
   }
 }

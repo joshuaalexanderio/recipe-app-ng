@@ -17,6 +17,7 @@ export class TodoistStore {
   readonly loading = signal<boolean>(false);
   readonly error = signal<string | null>(null);
   readonly lastShoppingListResult = signal<TodoistShoppingListResponse | null>(null);
+  readonly selectedProjectId = signal<string | null>(null);
 
   readonly hasProjects = computed(() => this.projects().length > 0);
   readonly hasTasks = computed(() => this.tasks().length > 0);
@@ -31,6 +32,10 @@ export class TodoistStore {
   connect() {
     // Redirect to backend OAuth endpoint — browser handles the flow
     window.location.href = this.api.getAuthorizeUrl();
+  }
+
+  setSelectedProject(projectId: string) {
+    this.selectedProjectId.set(projectId);
   }
 
   disconnect() {

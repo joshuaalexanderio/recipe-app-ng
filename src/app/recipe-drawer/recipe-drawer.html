@@ -81,5 +81,17 @@
       Selected ({{ checkedIds().size }})
     </button>
   </div>
-
+  @if (connected() && todoistStore.hasProjects()) {
+    <div class="px-4 py-3 border-t border-[#333]">
+      <label class="text-xs text-[#666] mb-1.5 block">Todoist Project</label>
+      <select
+        (change)="selectProject($any($event.target).value)"
+        class="w-full bg-[#2a2a2a] border border-[#444] text-[#ccc] text-xs rounded-md px-2.5 py-1.5 focus:outline-none focus:border-[#7c5cbf]"
+      >
+        @for (project of projects(); track project.id) {
+          <option [value]="project.id">{{ project.name }}</option>
+        }
+      </select>
+    </div>
+  }
 </div>

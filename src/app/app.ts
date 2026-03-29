@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {Component, effect, inject, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBar } from './components/nav-bar/nav-bar';
 import { AuthStore } from './stores/auth.store';
@@ -16,8 +16,17 @@ export class App implements OnInit {
   private authStore = inject(AuthStore);
   private todoistStore = inject(TodoistStore);
 
+  constructor() {
+    this.todoistStore.checkConnection();
+
+    effect(() => {
+      if (this.todoistStore.connected()) {
+        this.todoistStore.loadProjects();
+      }
+    });
+  }
   ngOnInit() {
     this.authStore.setCredentials(environment.basicAuthUsername, environment.basicAuthPassword);
-    this.todoistStore.checkConnection();
   }
+
 }
