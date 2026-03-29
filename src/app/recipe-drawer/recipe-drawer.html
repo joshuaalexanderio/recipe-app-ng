@@ -29,27 +29,30 @@
   <!-- ingredient list -->
   <div class="flex-1 overflow-y-auto py-2">
     @for (ingredient of recipe.recipeIngredients; track ingredient.id) {
-      <div class="flex items-center gap-2.5 px-4 py-2 group border-b border-[#2a2a2a] last:border-none">
+      <div class="flex items-center py-2 group border-b border-[#2a2a2a] last:border-none cursor-pointer">
+        <div (click)="toggleCheck(ingredient.id)" class="flex items-center px-4 gap-2.5">
+          <div>
+            <button
+              class="w-3.5 h-3.5 shrink-0 rounded-sm border flex items-center justify-center transition-colors"
+              [class.bg-[#7c5cbf]]="isChecked(ingredient.id)"
+              [class.border-[#7c5cbf]]="isChecked(ingredient.id)"
+              [class.border-[#555]]="!isChecked(ingredient.id)"
+            >
+              @if (isChecked(ingredient.id)) {
+                <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+                  <path d="M1 3l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              }
+            </button>
+          </div>
 
-        <button
-          (click)="toggleCheck(ingredient.id)"
-          class="w-3.5 h-3.5 shrink-0 rounded-sm border flex items-center justify-center transition-colors"
-          [class.bg-[#7c5cbf]]="isChecked(ingredient.id)"
-          [class.border-[#7c5cbf]]="isChecked(ingredient.id)"
-          [class.border-[#555]]="!isChecked(ingredient.id)"
-        >
-          @if (isChecked(ingredient.id)) {
-            <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-              <path d="M1 3l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          }
-        </button>
+          <span
+            class="text-xs flex-1 transition-colors text-[#ccc]"
+          >
+            {{ formatIngredient(ingredient) }}
+          </span>
+        </div>
 
-        <span
-          class="text-xs flex-1 transition-colors text-[#ccc]"
-        >
-          {{ formatIngredient(ingredient) }}
-        </span>
 
         <lucide-icon
           [img]="Trash2"
