@@ -17,8 +17,8 @@ export class NavBar {
   router = inject(Router);
   recipeApi = inject(RecipeApi);
 
-  readonly connected = this.todoistStore.connected;
-
+  readonly todoistConnected = this.todoistStore.connected;
+  readonly signedIn = this.authStore.credentials;
   signOut() {
     this.authStore.clear();
     this.router.navigate(['/login']);

@@ -8,7 +8,6 @@ import { AuthStore } from '../../stores/auth.store';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
 })
 export class Login {
   private authStore = inject(AuthStore);
