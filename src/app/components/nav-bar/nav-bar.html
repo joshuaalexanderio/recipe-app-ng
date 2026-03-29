@@ -1,6 +1,17 @@
 <div class="mt-2 mx-4 flex justify-center">
   <button class="btn" [routerLink]="['/']">Home</button>
+  <button (click)="todoistStore.connect()" class="btn">Connect to Todoist</button>
+  @if (!connected()) {
+    <div class="mx-4 mt-3 px-3 py-2 bg-yellow-900/20 border border-yellow-700/40 rounded-md text-xs text-yellow-500">
+      Todoist not connected
+    </div>
+  }
+  @else {
+    <div class="mx-4 mt-3 px-3 py-2 bg-green-900/20 border border-green-700/40 rounded-md text-xs text-green-500">
+      Todoist connected
+    </div>
+  }
   <span class="flex-5"></span>
   <button class="btn" [routerLink]="['/add']">Add Recipe</button>
-  <button class="btn bg-[#E34432] text-white hover:bg-[#CF3520]" (click)="deleteAllRecipes()">Delete All</button>
+  <button class="btn bg-[#E34432] text-white hover:bg-[#B8301F] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_#B8301F]" (click)="deleteAllRecipes()">Delete All</button>
 </div>
