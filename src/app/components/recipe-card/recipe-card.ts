@@ -29,6 +29,10 @@ export class RecipeCard implements OnInit {
 
   isFavorite = signal<boolean>(false);
 
+  toggleExpand() {
+    this.isExpanded.set(!this.isExpanded());
+  }
+
   toggleFavorite() {
     const newFavoriteStatus = !this.isFavorite();
     this.isFavorite.set(newFavoriteStatus);
