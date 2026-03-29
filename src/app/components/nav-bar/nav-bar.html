@@ -1,7 +1,7 @@
 <div class="mt-2 mx-4 flex justify-center">
   @if (signedIn()) {
   <button class="btn" [routerLink]="['/']">Home</button>
-
+    <button (click)="signOut()" class="btn">Sign out</button>
     @if (todoistConnected()) {
       <button (click)="todoistStore.disconnect()" class="btn bg-disconnect text-white hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]">
         Disconnect Todoist
@@ -11,7 +11,7 @@
       Connect to Todoist
     </button>
     }
-    <button (click)="signOut()" class="btn">Sign out</button>
+
 
     <span class="flex-3"></span>
     <button class="btn" [routerLink]="['/add']">Add Recipe</button>
