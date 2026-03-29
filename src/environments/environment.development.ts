@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  apiUsername: 'user',
-  apiPassword: 'password'
+  apiUrl: 'http://localhost:8080',
+  basicAuthUsername: 'user',
+  basicAuthPassword: 'password'
 };
