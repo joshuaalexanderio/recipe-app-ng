@@ -1,10 +1,18 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { inject } from '@angular/core';
+import { AuthStore } from '../../stores/auth.store'
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const authStore = inject(AuthStore);
+  const credentials = authStore.credentials();
 
-  const credentials = btoa(`${environment.basicAuthUsername}:${environment.basicAuthPassword}`);  const authReq = req.clone({
-    headers: req.headers.set('Authorization', `Basic ${credentials}`)
-  });
-  return next(authReq);
+  if (credentials) {
+    const encoded = btoa(`${credentials.username}:${credentials.password}`);
+    req = req.clone({
+      setHeaders: { Authorization: `Basic ${encoded}` },
+      withCredentials: true
+    });
+  }
+
+  return next(req);
 };
