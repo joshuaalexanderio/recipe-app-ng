@@ -45,9 +45,14 @@ export class RecipeList implements OnInit {
     );
   }
   handleRecipeIngredientDeleted(recipeId: number, recipeIngredientId: number) {
-    this.recipes.update(recipes =>
-      this.removeIngredientFromRecipe(recipes, recipeId, recipeIngredientId)
-    )
+    this.recipeApi.deleteRecipeIngredient(recipeIngredientId).subscribe(() => {
+      this.recipes.update(recipes =>
+        this.removeIngredientFromRecipe(recipes, recipeId, recipeIngredientId)
+      );
+      this.selectedRecipe.update(r =>
+        r?.id === recipeId ? (this.recipes().find(r => r.id === recipeId) ?? null) : r
+      );
+    });
   }
   private removeIngredientFromRecipe(recipes: Recipe[], recipeId: number, ingredientId: number): Recipe[] {
     return recipes.map(recipe => {
