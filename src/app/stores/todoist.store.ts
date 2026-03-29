@@ -60,6 +60,9 @@ export class TodoistStore {
     this.api.getProjects().subscribe({
       next: (projects) => {
         this.projects.set(projects);
+        if (projects.length > 0 && !this.selectedProjectId()) {
+          this.selectedProjectId.set(projects[0].id);
+        }
         this.loading.set(false);
       },
       error: (err) => {
