@@ -7,17 +7,15 @@
         Disconnect Todoist
       </button>
   } @else {
-    <button (click)="todoistStore.connect()" class="btn bg-connect text-white hover:bg-connect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-connect-shadow)]">
+    <button (click)="todoistStore.connect()" class="btn bg-connect text-primary hover:bg-connect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-connect-shadow)]">
       Connect to Todoist
     </button>
-  }
-    @if (signedIn()) {
+    }
     <button (click)="signOut()" class="btn">Sign out</button>
 
     <span class="flex-3"></span>
     <button class="btn" [routerLink]="['/add']">Add Recipe</button>
-    <button class="btn bg-[#E34432] text-white hover:bg-[#B8301F] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_#B8301F]" (click)="deleteAllRecipes()">Delete All</button>
-    }
+    <button class="btn bg-disconnect text-white hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]" (click)="deleteAllRecipes()">Delete All</button>
   }
 </div>
 
