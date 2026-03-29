@@ -19,6 +19,13 @@ export class NavBar {
 
   readonly todoistConnected = this.todoistStore.connected;
   readonly signedIn = this.authStore.credentials;
+
+  greeting() {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 18) return 'Good afternoon';
+    return 'Good evening';
+  }
   signOut() {
     this.authStore.clear();
     this.router.navigate(['/login']);
