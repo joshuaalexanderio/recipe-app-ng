@@ -1,5 +1,4 @@
 import {RecipeIngredient} from './recipeIngredient';
-import {User} from './user';
 
 export interface Recipe {
   id: number;
@@ -8,5 +7,4 @@ export interface Recipe {
   recipeUrl: string;
   favorite: boolean;
   recipeIngredients: RecipeIngredient[];
-  user: User;
 }
