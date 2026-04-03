@@ -13,6 +13,7 @@ import {
 import {RecipeApi} from '../../services/recipe-api';
 import {RecipeIngredient} from '../../models/recipeIngredient';
 import {TodoistStore} from '../../stores/todoist.store';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-recipe-card',
   imports: [LucideAngularModule],
@@ -31,13 +32,17 @@ export class RecipeCard implements OnInit {
   readonly ChevronUp = ChevronUp;
   readonly ChevronRight = ChevronRight;
   readonly Star = Star;
-  constructor(private recipeApiService: RecipeApi) {}
+  constructor(private recipeApiService: RecipeApi, private router: Router) {}
   private todoistStore = inject(TodoistStore);
 
   isExpanded = signal(false);
   selectedIngredients = signal<Set<number>>(new Set());
 
   isFavorite = signal<boolean>(false);
+
+  editRecipe() {
+    this.router.navigate(['/edit', this.recipe.id]);
+  }
 
   toggleFavorite() {
     const newFavoriteStatus = !this.isFavorite();

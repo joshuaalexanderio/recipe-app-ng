@@ -9,7 +9,7 @@
         class="text-muted favorite-star cursor-pointer transition-all hover:scale-110 active:scale-[1.01] inline-block align-middle"
       ></lucide-icon></h3>
     </a>
-    <lucide-icon [img]="Pencil" class="icon-action"></lucide-icon>
+    <lucide-icon [img]="Pencil" class="icon-action" (click)="editRecipe()"></lucide-icon>
     <lucide-icon [img]="Trash2" class="icon-action" (click)="deleteRecipe()"></lucide-icon>
   </div>
 

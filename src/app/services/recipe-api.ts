@@ -16,6 +16,10 @@ export class RecipeApi {
     return this.http.get<Recipe[]>(`${this.apiUrl}/recipes`);
   }
 
+  fetchRecipe(id: number): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.apiUrl}/recipes/${id}`);
+  }
+
   updateFavorite(recipeId: number, isFavorite: boolean): Observable<Recipe> {
     return this.http.put<Recipe>(`${this.apiUrl}/recipes/${recipeId}`, { favorite: isFavorite });
   }
@@ -34,6 +38,10 @@ export class RecipeApi {
 
   deleteAllRecipes(): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/recipes`);
+  }
+
+  updateRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.put<Recipe>(`${this.apiUrl}/recipes/${recipe.id}`, recipe);
   }
 
   deleteRecipeIngredient(recipeIngredientId: number): Observable<void> {
