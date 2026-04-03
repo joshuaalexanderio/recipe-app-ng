@@ -1,22 +1,22 @@
 @if (signedIn()) {
-  <div class="flex flex-col mx-8">
-    <div class="mt-2  flex justify-center">
-
-        <button class="btn" [routerLink]="['/']">Home</button>
-        <button (click)="signOut()" class="btn">Sign out</button>
-        @if (todoistConnected()) {
-          <button (click)="todoistStore.disconnect()" class="btn bg-disconnect text-white hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]">
-            Disconnect Todoist
-          </button>
-        } @else {
-          <button (click)="todoistStore.connect()" class="btn bg-connect text-primary hover:bg-connect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-connect-shadow)]">
-            Connect to Todoist
-          </button>
-        }
-        <span class="flex-3"></span>
-        <button class="btn" [routerLink]="['/add']">Add Recipe</button>
-        <button class="btn bg-disconnect text-white hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]" (click)="deleteAllRecipes()">Delete All</button>
+  <div class="flex flex-col mx-2 md:mx-8 mt-2">
+    <div class="flex">
+      <button class="btn" [routerLink]="['/']">Home</button>
+      <button class="btn" [routerLink]="['/add']">Add Recipe</button>
     </div>
-    <span class="text-white ml-2 mt-2">{{ greeting() }}, {{ signedIn()?.username }}</span>
+    <div class="flex">
+      <button (click)="signOut()" class="btn">Sign out</button>
+      @if (todoistConnected()) {
+        <button (click)="todoistStore.disconnect()" class="btn bg-disconnect border-disconnect-border text-primary hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]">
+          Disconnect Todoist
+        </button>
+      } @else {
+        <button (click)="todoistStore.connect()" class="btn bg-connect border-connect-border text-primary hover:bg-connect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-connect-shadow)]">
+          Connect to Todoist
+        </button>
+      }
+      <button class="btn bg-disconnect border-disconnect-border text-primary hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]" (click)="deleteAllRecipes()">Delete All</button>
+    </div>
+    <span class="text-white ml-2 mt-1">{{ greeting() }}, {{ signedIn()?.username }}</span>
   </div>
 }

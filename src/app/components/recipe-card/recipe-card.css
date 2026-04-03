@@ -2,7 +2,7 @@
   display: block;
   margin: 10px;
   padding: 10px;
-  background-color: #242424;
+  background-color: var(--color-primary);
   border-radius: 6px;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -13,6 +13,6 @@
 }
 
 .favorite-star {
-  ::ng-deep svg { fill: none; stroke: #666; }
-  &.favorite-filled ::ng-deep svg { fill: #651FFF; stroke: #651FFF; }
+  ::ng-deep svg { fill: none; stroke: var(--color-white-secondary); }
+  &.favorite-filled ::ng-deep svg { fill: var(--color-favorite); stroke: var(--color-favorite); }
 }

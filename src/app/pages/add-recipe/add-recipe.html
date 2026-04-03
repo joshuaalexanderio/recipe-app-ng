@@ -1,18 +1,20 @@
-<div class="add-recipe-container">
-  <h1>Add New Recipe</h1>
+<div class="max-w-[800px] mx-auto my-5 text-white">
+  <h1 class="mb-5 ml-[30px] text-white">Add New Recipe</h1>
 
   <!-- Import Section at top -->
-  <div class="import-section">
-    <h3>Import from URL (optional)</h3>
-    <div class="url-input-group">
+  <div class="flex flex-wrap bg-primary p-5 rounded-md m-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-200 ease-in-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
+    <h3 class="text-white mb-4 text-base">Import from URL (optional)</h3>
+    <div class="flex flex-wrap gap-2.5 w-full">
       <input
         type="text"
         placeholder="Paste recipe URL to auto-fill"
         [(ngModel)]="recipeUrl"
+        class="flex-1 p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       >
       <button
         (click)="importFromUrl()"
         [disabled]="!recipeUrl() || isLoading()"
+        class="import-btn"
       >
         @if (isLoading()) {
           Importing...
@@ -23,54 +25,67 @@
     </div>
   </div>
 
-  <div class="recipe-form">
-    <div class="form-group">
-      <label for="name">Recipe Name *</label>
+  <div class="bg-primary p-5 rounded-md m-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-200 ease-in-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
+    <div class="mb-5">
+      <label for="name" class="block mb-2 font-medium text-white text-sm">Recipe Name *</label>
       <input
         type="text"
         id="name"
         [(ngModel)]="recipe().name"
+        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] box-border placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       >
     </div>
 
-    <div class="form-group">
-      <label for="description">Description</label>
+    <div class="mb-5">
+      <label for="description" class="block mb-2 font-medium text-white text-sm">Description</label>
       <textarea
         id="description"
         rows="3"
         [(ngModel)]="recipe().description"
+        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] box-border resize-y min-h-[80px] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       ></textarea>
     </div>
 
-    <div class="form-group">
-      <label for="url">Recipe URL</label>
+    <div class="mb-5">
+      <label for="url" class="block mb-2 font-medium text-white text-sm">Recipe URL</label>
       <input
         type="url"
         id="url"
         [(ngModel)]="recipe().recipeUrl"
+        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] box-border placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       >
     </div>
 
-    <h3>Ingredients</h3>
-    <ul class="ingredients-list">
+    <h3 class="text-white my-5 text-base">Ingredients</h3>
+    <ul class="list-none p-0 mb-[15px]">
       @for (ingredient of recipe().recipeIngredients; track $index) {
-        <li>
-          <input type="text" [(ngModel)]="ingredient.quantity" placeholder="Qty">
-          <input type="text" [(ngModel)]="ingredient.unit" placeholder="Unit">
-          <input type="text" [(ngModel)]="ingredient.name" placeholder="Ingredient">
+        <li class="flex gap-2 mb-2.5 py-2 border-b border-gray last:border-b-0">
+          <input type="text" [(ngModel)]="ingredient.quantity" placeholder="Qty"
+            class="w-[60px] p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
+          <input type="text" [(ngModel)]="ingredient.unit" placeholder="Unit"
+            class="w-[70px] p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
+          <input type="text" [(ngModel)]="ingredient.name" placeholder="Ingredient"
+            class="flex-1 min-w-0 p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
           <button class="delete-btn" (click)="deleteIngredient($index)">
-            <lucide-icon [img]="X" [size]="20" class="delete-ingredient-icon"></lucide-icon>
+            <lucide-icon [img]="X" [size]="20"></lucide-icon>
           </button>
-
         </li>
       }
-      <button class="add-ingredient-button" (click)="addIngredient()">Add Ingredient</button>
-
+      <button
+        (click)="addIngredient()"
+        class="w-full px-6 py-3 mt-2.5 bg-[var(--color-btn)] text-white border-none rounded-md cursor-pointer font-[Poppins] font-medium transition-all duration-200 hover:bg-[var(--color-btn-hover)] disabled:bg-[$cancel-btn] disabled:text-white-secondary disabled:cursor-not-allowed"
+      >Add Ingredient</button>
     </ul>
 
-    <div class="form-actions">
-      <button class="cancel-btn" (click)="cancel()">Cancel</button>
-      <button class="save-btn" (click)="saveRecipe(recipe())">Save Recipe</button>
+    <div class="flex gap-2.5 justify-end mt-[30px] pt-5 border-t border-gray">
+      <button
+        (click)="cancel()"
+        class="cancel-btn"
+      >Cancel</button>
+      <button
+        (click)="saveRecipe(recipe())"
+        class="px-6 py-3 border-none rounded-md cursor-pointer text-base font-[Poppins] font-medium transition-all duration-200 bg-[var(--color-btn)] text-white hover:bg-[var(--color-btn-hover)]"
+      >Save Recipe</button>
     </div>
   </div>
 </div>

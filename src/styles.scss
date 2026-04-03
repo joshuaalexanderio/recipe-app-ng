@@ -17,12 +17,25 @@
   --color-disconnect-hover: #C95F5F;
   --color-disconnect-shadow: #C95F5F66;
   --color-disconnect-border: #EFA0A0;
+
+  --color-btn: #7E57C2;
+  --color-btn-text: #EDE7F6;
+  --color-btn-border: #A98EDA;
+  --color-btn-shadow: #5E35B1;
+
+  --color-icon: #888;
+  --color-muted: #b0b0b0;
+  --color-icon-hover: #ff6b6b;
+  --color-ingredient-text: #d0d0d0;
+  --color-favorite: #651FFF;
+  --color-input-bg: #2a2a2a;
+  --color-btn-hover: #6A4AAA;
 }
 
 /* You can add global styles to this file, and also import other style files */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #1a1a1a;
+  background-color: var(--color-black);
 
 }
 a {
@@ -34,14 +47,14 @@ a {
 }
 @layer components {
   .btn {
-    @apply flex-1 px-6 py-2.5 text-sm font-medium text-[#EDE7F6] bg-[#7E57C2] border border-[#A98EDA] rounded-md cursor-pointer transition-all duration-200 ease-in-out m-[5px];
+    @apply flex-1 px-6 py-2.5 text-sm font-medium text-[var(--color-btn-text)] bg-[var(--color-btn)] border border-[var(--color-btn-border)] rounded-md cursor-pointer transition-all duration-200 ease-in-out m-[5px];
 
     &:hover {
-      @apply -translate-y-0.5 shadow-[0_3px_6px_#5E35B1];
+      @apply -translate-y-0.5 shadow-[0_3px_6px_var(--color-btn-shadow)];
     }
 
     &:active {
-      @apply translate-y-0 shadow-[0_2px_4px_#5E35B1];
+      @apply translate-y-0 shadow-[0_2px_4px_var(--color-btn-shadow)];
     }
 
     &:disabled {
@@ -49,11 +62,11 @@ a {
     }
   }
   .icon-action {
-    @apply cursor-pointer transition-all text-[#888] hover:scale-110 hover:text-[#ff6b6b] active:scale-[1.01];
+    @apply cursor-pointer transition-all text-[var(--color-icon)] hover:scale-110 hover:text-[var(--color-icon-hover)] active:scale-[1.01];
   }
 
   .ingredient-li {
-    @apply py-2 flex items-center gap-2.5 text-[#d0d0d0] border-b border-[#333] last:border-b-0 [&:hover_label]:text-white;
+    @apply py-2 flex items-center gap-2.5 text-[var(--color-ingredient-text)] border-b border-[var(--color-gray)] last:border-b-0 [&:hover_label]:text-white;
   }
 }
 
