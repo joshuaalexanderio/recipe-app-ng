@@ -9,7 +9,7 @@
         type="text"
         placeholder="Paste recipe URL to auto-fill"
         [(ngModel)]="recipeUrl"
-        class="flex-1 p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
+        class="flex-1 p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       >
       <button
         (click)="importFromUrl()"
@@ -32,7 +32,7 @@
         type="text"
         id="name"
         [(ngModel)]="recipe().name"
-        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] box-border placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
+        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white box-border placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       >
     </div>
 
@@ -42,7 +42,7 @@
         id="description"
         rows="3"
         [(ngModel)]="recipe().description"
-        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] box-border resize-y min-h-[80px] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
+        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white box-border resize-y min-h-[80px] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       ></textarea>
     </div>
 
@@ -52,7 +52,7 @@
         type="url"
         id="url"
         [(ngModel)]="recipe().recipeUrl"
-        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] box-border placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
+        class="w-full p-3 bg-[var(--color-input-bg)] border border-gray rounded-md text-white box-border placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]"
       >
     </div>
 
@@ -61,11 +61,11 @@
       @for (ingredient of recipe().recipeIngredients; track $index) {
         <li class="flex gap-2 mb-2.5 py-2 border-b border-gray last:border-b-0">
           <input type="text" [(ngModel)]="ingredient.quantity" placeholder="Qty"
-            class="w-[60px] p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
+            class="w-[60px] p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
           <input type="text" [(ngModel)]="ingredient.unit" placeholder="Unit"
-            class="w-[70px] p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
+            class="w-[70px] p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
           <input type="text" [(ngModel)]="ingredient.name" placeholder="Ingredient"
-            class="flex-1 min-w-0 p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white font-[Poppins] placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
+            class="flex-1 min-w-0 p-2.5 bg-[var(--color-input-bg)] border border-gray rounded-md text-white placeholder-white-secondary focus:outline-none focus:border-[var(--color-btn)]">
           <button class="delete-btn" (click)="deleteIngredient($index)">
             <lucide-icon [img]="X" [size]="20"></lucide-icon>
           </button>
@@ -73,7 +73,7 @@
       }
       <button
         (click)="addIngredient()"
-        class="w-full px-6 py-3 mt-2.5 bg-[var(--color-btn)] text-white border-none rounded-md cursor-pointer font-[Poppins] font-medium transition-all duration-200 hover:bg-[var(--color-btn-hover)] disabled:bg-[$cancel-btn] disabled:text-white-secondary disabled:cursor-not-allowed"
+        class="w-full px-6 py-3 mt-2.5 bg-[var(--color-btn)] text-white border-none rounded-md cursor-pointer font-medium transition-all duration-200 hover:bg-[var(--color-btn-hover)] disabled:bg-[$cancel-btn] disabled:text-white-secondary disabled:cursor-not-allowed"
       >Add Ingredient</button>
     </ul>
 
@@ -84,7 +84,7 @@
       >Cancel</button>
       <button
         (click)="saveRecipe(recipe())"
-        class="px-6 py-3 border-none rounded-md cursor-pointer text-base font-[Poppins] font-medium transition-all duration-200 bg-[var(--color-btn)] text-white hover:bg-[var(--color-btn-hover)]"
+        class="px-6 py-3 border-none rounded-md cursor-pointer text-base font-medium transition-all duration-200 bg-[var(--color-btn)] text-white hover:bg-[var(--color-btn-hover)]"
       >Save Recipe</button>
     </div>
   </div>
