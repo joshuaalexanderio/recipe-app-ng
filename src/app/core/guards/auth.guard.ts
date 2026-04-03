@@ -12,3 +12,14 @@ export const authGuard: CanActivateFn = () => {
 
   return router.createUrlTree(['/login']);
 };
+
+export const noAuthGuard: CanActivateFn = () => {
+  const authStore = inject(AuthStore);
+  const router = inject(Router);
+
+  if (authStore.credentials()) {
+    return router.createUrlTree(['/']);
+  }
+
+  return true;
+};
