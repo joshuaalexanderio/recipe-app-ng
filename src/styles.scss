@@ -8,13 +8,15 @@
   --color-todoist: #E34432;
   --color-gray: #333;
 
-  --color-connect: #5CE65C;
-  --color-connect-hover: #39D939;
-  --color-connect-shadow: #39D93966;
+  --color-connect: #4DB6AC;
+  --color-connect-hover: #38A89D;
+  --color-connect-shadow: #38A89D66;
+  --color-connect-border: #7DCFC9;
 
-  --color-disconnect: #FF2C2C;
-  --color-disconnect-hover: #E60000;
-  --color-disconnect-shadow: #E6000066;
+  --color-disconnect: #E57373;
+  --color-disconnect-hover: #C95F5F;
+  --color-disconnect-shadow: #C95F5F66;
+  --color-disconnect-border: #EFA0A0;
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -32,7 +34,7 @@ a {
 }
 @layer components {
   .btn {
-    @apply flex-1 px-6 py-2.5 text-sm font-medium text-[#EDE7F6] bg-[#7E57C2] border-none rounded-md cursor-pointer transition-all duration-200 ease-in-out m-[5px];
+    @apply flex-1 px-6 py-2.5 text-sm font-medium text-[#EDE7F6] bg-[#7E57C2] border border-[#A98EDA] rounded-md cursor-pointer transition-all duration-200 ease-in-out m-[5px];
 
     &:hover {
       @apply -translate-y-0.5 shadow-[0_3px_6px_#5E35B1];
