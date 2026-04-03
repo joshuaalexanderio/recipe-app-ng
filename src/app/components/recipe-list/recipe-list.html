@@ -3,7 +3,7 @@
   <!-- grid shrinks when drawer is open -->
   <div class="grid gap-4 md:gap-6 items-start flex-1 transition-all duration-300 grid-cols-1 sm:grid-cols-2"
        [ngClass]="selectedRecipe() ? 'lg:grid-cols-2' : 'lg:grid-cols-3'">
-    @for (recipe of sortedRecipes(); track recipe.id) {
+    @for (recipe of sortedRecipes(); track recipe.id; let i = $index) {
       <app-recipe-card
         [recipe]="recipe"
         [active]="selectedRecipe()?.id === recipe.id"
@@ -12,13 +12,21 @@
         (recipeIngredientDeleted)="handleRecipeIngredientDeleted(recipe.id, $event.id)"
         (recipeSelected)="onRecipeSelected($event)"
       ></app-recipe-card>
+      @if (selectedRecipe()?.id === recipe.id) {
+        <app-recipe-drawer
+          class="block md:hidden col-span-full"
+          [recipe]="selectedRecipe()!"
+          (closed)="selectedRecipe.set(null)"
+          (ingredientDeleted)="handleRecipeIngredientDeleted(selectedRecipe()!.id, $event)"
+        />
+      }
     }
   </div>
 
   <!-- drawer -->
   @if (selectedRecipe()) {
     <app-recipe-drawer
-      class="w-full md:w-96 shrink-0"
+      class="hidden md:block w-96 shrink-0"
       [recipe]="selectedRecipe()!"
       (closed)="selectedRecipe.set(null)"
       (ingredientDeleted)="handleRecipeIngredientDeleted(selectedRecipe()!.id, $event)"

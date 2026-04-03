@@ -20,9 +20,7 @@
     (click)="recipeSelected.emit(recipe)"
   >
     <h4 class="flex-1 text-white text-base ingredients-trigger">Ingredients:</h4>
-    <lucide-icon
-      class="pl-[3px] text-muted"
-      [img]="active ? ChevronLeft : ChevronRight"
-    ></lucide-icon>
+    <lucide-icon class="pl-[3px] text-muted md:hidden" [img]="active ? ChevronUp : ChevronDown"></lucide-icon>
+    <lucide-icon class="pl-[3px] text-muted hidden md:block" [img]="active ? ChevronLeft : ChevronRight"></lucide-icon>
   </div>
 </div>

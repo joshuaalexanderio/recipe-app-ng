@@ -3,6 +3,7 @@ import {Component, EventEmitter, inject, Input, OnInit, Output, signal} from '@a
 import {
   LucideAngularModule,
   ChevronDown,
+  ChevronUp,
   ChevronRight,
   Star,
   Trash2,
@@ -27,6 +28,7 @@ export class RecipeCard implements OnInit {
   @Output() recipeIngredientDeleted = new EventEmitter<RecipeIngredient>();
 
   readonly ChevronDown = ChevronDown;
+  readonly ChevronUp = ChevronUp;
   readonly ChevronRight = ChevronRight;
   readonly Star = Star;
   constructor(private recipeApiService: RecipeApi) {}
