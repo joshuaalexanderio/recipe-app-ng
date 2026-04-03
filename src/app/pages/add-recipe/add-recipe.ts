@@ -9,7 +9,6 @@ import {LucideAngularModule, Trash2, X} from 'lucide-angular';
   selector: 'app-add-recipe',
   imports: [FormsModule, LucideAngularModule],
   templateUrl: './add-recipe.html',
-  styleUrl: './add-recipe.scss',
 })
 export class AddRecipe implements OnInit {
   recipeUrl = signal('');

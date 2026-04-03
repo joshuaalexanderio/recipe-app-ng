@@ -9,7 +9,6 @@ import { LucideAngularModule, X } from 'lucide-angular';
   selector: 'app-edit-recipe',
   imports: [FormsModule, LucideAngularModule],
   templateUrl: './edit-recipe.html',
-  styleUrl: '../add-recipe/add-recipe.scss',
 })
 export class EditRecipe implements OnInit {
   isLoading = signal(true);
