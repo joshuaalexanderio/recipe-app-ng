@@ -29,6 +29,7 @@ export class NavBar {
   signOut() {
     this.authStore.clear();
     this.todoistStore.disconnect();
+    this.todoistStore.connected.set(null);
     this.router.navigate(['/login']);
   }
 

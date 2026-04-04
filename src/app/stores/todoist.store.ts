@@ -45,12 +45,12 @@ export class TodoistStore {
     this.loading.set(true);
     this.api.disconnect().subscribe({
       next: () => {
-        this.connected.set(false);
         this.projects.set([]);
         this.tasks.set([]);
         this.loading.set(false);
       },
       error: (err) => {
+        this.connected.set(true);
         this.error.set('Failed to disconnect from Todoist');
         this.loading.set(false);
       }
