@@ -41,6 +41,7 @@ export class TodoistStore {
   }
 
   disconnect() {
+    this.connected.set(false);
     this.loading.set(true);
     this.api.disconnect().subscribe({
       next: () => {

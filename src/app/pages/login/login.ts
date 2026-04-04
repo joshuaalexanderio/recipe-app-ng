@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthStore } from '../../stores/auth.store';
+import { TodoistStore } from '../../stores/todoist.store';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { AuthStore } from '../../stores/auth.store';
 })
 export class Login {
   private authStore = inject(AuthStore);
+  private todoistStore = inject(TodoistStore);
   private router = inject(Router);
 
   username = '';
@@ -23,6 +25,7 @@ export class Login {
       return;
     }
     this.authStore.setCredentials(this.username, this.password);
+    this.todoistStore.checkConnection();
     this.router.navigate(['/']);
   }
 }
