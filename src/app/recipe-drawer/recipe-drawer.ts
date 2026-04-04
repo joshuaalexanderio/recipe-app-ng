@@ -37,6 +37,10 @@ export class RecipeDrawerComponent {
     this.todoistStore.setSelectedProject(projectId);
   }
 
+  clearChecked() {
+    this.checkedIds.set(new Set());
+  }
+
   toggleCheck(id: number) {
     this.checkedIds.update(set => {
       const next = new Set(set);
