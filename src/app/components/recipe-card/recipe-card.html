@@ -1,7 +1,7 @@
 <div class="h-full text-[#e0e0e0]">
 
   <div class="flex items-start pl-2 gap-1">
-    <a href="{{recipe.recipeUrl}}" class="hover:text-[#B388FF] flex-1">
+    <a href="{{recipe.recipeUrl}}" rel="noopener noreferrer" target="_blank" class="hover:text-[#B388FF] flex-1">
       <h3>{{ recipe.name }} <lucide-icon
         [img]="Star"
         [class.favorite-filled]="isFavorite()"
