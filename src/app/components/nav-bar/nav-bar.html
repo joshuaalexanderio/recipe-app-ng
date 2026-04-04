@@ -6,14 +6,16 @@
     </div>
     <div class="flex">
       <button (click)="signOut()" class="btn">Sign out</button>
-      @if (todoistConnected()) {
-        <button (click)="todoistStore.disconnect()" class="btn bg-disconnect border-disconnect-border text-primary hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]">
-          Disconnect Todoist
-        </button>
-      } @else {
-        <button (click)="todoistStore.connect()" class="btn bg-connect border-connect-border text-primary hover:bg-connect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-connect-shadow)]">
-          Connect to Todoist
-        </button>
+      @if (todoistConnected() !== null) {
+        @if (todoistConnected()) {
+          <button (click)="todoistStore.disconnect()" class="btn bg-disconnect border-disconnect-border text-primary hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]">
+            Disconnect Todoist
+          </button>
+        } @else {
+          <button (click)="todoistStore.connect()" class="btn bg-connect border-connect-border text-primary hover:bg-connect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-connect-shadow)]">
+            Connect to Todoist
+          </button>
+        }
       }
       <button class="btn bg-disconnect border-disconnect-border text-primary hover:bg-disconnect-hover hover:-translate-y-0.5 hover:shadow-[0_3px_6px_var(--color-disconnect-shadow)]" (click)="deleteAllRecipes()">Delete All</button>
     </div>

@@ -11,7 +11,7 @@ import {
 export class TodoistStore {
   private api = inject(TodoistApi);
 
-  readonly connected = signal<boolean>(true);
+  readonly connected = signal<boolean | null>(null);
   readonly projects = signal<TodoistProject[]>([]);
   readonly tasks = signal<TodoistTask[]>([]);
   readonly loading = signal<boolean>(false);
