@@ -23,8 +23,8 @@ export class TodoistApi {
     return this.http.post<TodoistConnectionStatus>(`${this.authUrl}/disconnect`, {});
   }
 
-  getAuthorizeUrl(): string {
-    return `${this.authUrl}/authorize`;
+  getAuthorizeUrl() {
+    return this.http.get<{ url: string }>(`${this.authUrl}/authorize`);
   }
 
   getProjects() {

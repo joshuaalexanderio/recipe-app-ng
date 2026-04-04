@@ -30,8 +30,10 @@ export class TodoistStore {
   }
 
   connect() {
-    // Redirect to backend OAuth endpoint — browser handles the flow
-    window.location.href = this.api.getAuthorizeUrl();
+    this.api.getAuthorizeUrl().subscribe({
+      next: ({ url }) => window.location.href = url,
+      error: () => this.error.set('Failed to initiate Todoist connection')
+    });
   }
 
   setSelectedProject(projectId: string) {
